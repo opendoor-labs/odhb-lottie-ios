@@ -839,6 +839,13 @@ final public class AnimationView: LottieView {
     CATransaction.commit()
   }
 
+  public func updateAnimationFrameInflight(_ newFrame: CGFloat) {
+    CATransaction.begin()
+    CATransaction.setDisableActions(true)
+    animationLayer?.currentFrame = newFrame
+    CATransaction.commit()
+  }
+
   @objc
   override func animationWillMoveToBackground() {
     updateAnimationForBackgroundState()
